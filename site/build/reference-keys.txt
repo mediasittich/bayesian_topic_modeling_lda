@@ -10,3 +10,6 @@ lda-theory
 what-is-lda
 how-does-it-work
 case-study
+document-term-matrix
+word-topic-probabilities
+document-topic-probabilities

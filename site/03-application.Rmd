@@ -2,4 +2,104 @@
 
 Some _significant_ applications are demonstrated in this chapter.
 
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', 
+  #fig.width = 10, fig.height = 6,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+
+```{r load packages}
+library(tidyverse)
+library(tidytext)
+library(tm)
+library(topicmodels)
+library(stringr)
+```
+
+```{r}
+data("AssociatedPress", package = "topicmodels")
+```
+
+### Document-Term-Matrix
+
+```{r}
+AssociatedPress
+```
+
+The data set is an object of class "DocumentTermMatrix" provided by package tm. It is a document-term matrix which contains the term frequency of 10473 terms in 2246 documents. 
+
+```{r}
+terms <- Terms(AssociatedPress)
+```
+```{r}
+summary(terms)
+```
+```{r}
+head(terms)
+```
+
+```{r}
+ap_td <- tidy(AssociatedPress)
+ap_td
+```
+
+
+
+```{r}
+# set a seed so that the output of the model is predictable
+ap_lda <- LDA(AssociatedPress, k = 2, control = list(seed = 42))
+ap_lda
+```
+
+### Word-topic probabilities
+
+```{r}
+ap_topics <- tidy(ap_lda, matrix = "beta")
+ap_topics
+```
+
+```{r}
+ap_top_terms <- ap_topics %>%
+  group_by(topic) %>%
+  slice_max(beta, n = 10) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)
+
+ap_top_terms %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+```
+
+### Document-topic probabilities
+
+```{r}
+ap_documents <- tidy(ap_lda, matrix = "gamma")
+ap_documents
+```
+
+```{r}
+tidy(AssociatedPress) %>%
+  filter(document == 6) %>%
+  arrange(desc(count))
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
