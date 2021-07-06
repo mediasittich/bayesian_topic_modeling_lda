@@ -121,7 +121,7 @@ top_terms <- ap_lda_td %>%
 top_terms
 ```
 
-```{r}
+```{r, fig.width=11, fig.height=10}
 top_terms %>%
   mutate(term = reorder(term, beta)) %>%
   ggplot(aes(term, beta, fill = factor(topic))) +
