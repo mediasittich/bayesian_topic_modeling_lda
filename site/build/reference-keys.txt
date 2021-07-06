@@ -1,4 +1,12 @@
 fig:nice-fig
 tab:nice-tab
-prerequisites
-intro
+introduction
+theory
+bayes-rule
+dirichlet-distribution
+multinomial-distribution
+mixture-models
+lda-theory
+what-is-lda
+how-does-it-work
+case-study
