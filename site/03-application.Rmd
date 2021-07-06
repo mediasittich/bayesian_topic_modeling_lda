@@ -19,6 +19,8 @@ library(tidytext)
 library(tm)
 library(topicmodels)
 library(stringr)
+library(wordcloud)
+library(RColorBrewer)
 ```
 
 ```{r}
@@ -77,6 +79,7 @@ ap_top_terms %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 ```
+Kind of fuzzy...
 
 ### Document-topic probabilities
 
@@ -86,14 +89,46 @@ ap_documents
 ```
 
 ```{r}
+ap_documents %>%
+  filter(topic == 1) %>%
+  summary
+```
+
+
+```{r}
 tidy(AssociatedPress) %>%
   filter(document == 6) %>%
   arrange(desc(count))
 ```
 
 
+```{r}
+# set a seed so that the output of the model is predictable
+ap_lda <- LDA(AssociatedPress, k = 12, control = list(seed = 42))
+ap_lda
+```
 
+```{r}
+ap_lda_td <- tidy(ap_lda)
+```
+```{r}
+top_terms <- ap_lda_td %>%
+  group_by(topic) %>%
+  top_n(5, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
 
+top_terms
+```
+
+```{r}
+top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free", ncol = 3) +
+  coord_flip()
+```
 
 
 

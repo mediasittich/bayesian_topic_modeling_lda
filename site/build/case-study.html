@@ -24,7 +24,7 @@
 <meta name="author" content="Regina Galambos" />
 
 
-<meta name="date" content="2021-07-06" />
+<meta name="date" content="2021-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,7 +181,8 @@ Weighting          : term frequency (tf)</code></pre>
  9     1 abbott     2.85e-18
 10     2 abbott     3.11e- 5
 # … with 20,936 more rows</code></pre>
-<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+Kind of fuzzy…</p>
 </div>
 <div id="document-topic-probabilities" class="section level3" number="4.0.3">
 <h3><span class="header-section-number">4.0.3</span> Document-topic probabilities</h3>
@@ -199,6 +200,13 @@ Weighting          : term frequency (tf)</code></pre>
  9        9     1 0.976  
 10       10     1 0.759  
 # … with 4,482 more rows</code></pre>
+<pre><code>    document          topic       gamma          
+ Min.   :   1.0   Min.   :1   Min.   :0.0003151  
+ 1st Qu.: 562.2   1st Qu.:1   1st Qu.:0.0028051  
+ Median :1123.5   Median :1   Median :0.2945853  
+ Mean   :1123.5   Mean   :1   Mean   :0.4160884  
+ 3rd Qu.:1684.8   3rd Qu.:1   3rd Qu.:0.8347125  
+ Max.   :2246.0   Max.   :1   Max.   :0.9997184  </code></pre>
 <pre><code># A tibble: 287 x 3
    document term           count
       &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;
@@ -213,6 +221,22 @@ Weighting          : term frequency (tf)</code></pre>
  9        6 panamanian         5
 10        6 american           4
 # … with 277 more rows</code></pre>
+<pre><code>A LDA_VEM topic model with 12 topics.</code></pre>
+<pre><code># A tibble: 60 x 3
+   topic term        beta
+   &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
+ 1     1 court    0.00852
+ 2     1 trial    0.00807
+ 3     1 case     0.00769
+ 4     1 attorney 0.00708
+ 5     1 judge    0.00704
+ 6     2 house    0.0107 
+ 7     2 bill     0.00906
+ 8     2 congress 0.00904
+ 9     2 i        0.00857
+10     2 senate   0.00800
+# … with 50 more rows</code></pre>
+<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-xie2015" class="csl-entry">
