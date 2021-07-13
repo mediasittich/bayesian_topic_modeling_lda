@@ -6,7 +6,7 @@ Some _significant_ applications are demonstrated in this chapter.
 knitr::opts_chunk$set(
   comment = '', 
   #fig.width = 10, fig.height = 6,
-  echo = FALSE,
+  echo = TRUE,
   message = FALSE,
   warning = FALSE
 )
@@ -18,6 +18,7 @@ library(tidyverse)
 library(tidytext)
 library(tm)
 library(topicmodels)
+library(topicdoc)
 library(stringr)
 library(wordcloud)
 library(RColorBrewer)
@@ -50,20 +51,45 @@ ap_td <- tidy(AssociatedPress)
 ap_td
 ```
 
-
+### Split data for training & test
 
 ```{r}
-# set a seed so that the output of the model is predictable
-ap_lda <- LDA(AssociatedPress, k = 2, control = list(seed = 42))
-ap_lda
+# Select first 500 articles
+full_data <- AssociatedPress[1:500, ]
 ```
 
-### Word-topic probabilities
+```{r}
+# create train and test sets
+n <- nrow(full_data)
+
+splitter <- sample(1:n, round(n * 0.8))
+train_set <- full_data[splitter, ]
+test_set <- full_data[-splitter, ]
+```
+
+### Train models for different k
 
 ```{r}
-ap_topics <- tidy(ap_lda, matrix = "beta")
+# fit models with different k
+n_topics <- c(2, 4, 10, 20, 50, 100)
+ap_lda_models <- n_topics %>%
+  map(LDA, x = train_set, control = list(seed = 42))
+```
+
+```{r}
+# Select model with k = 2
+ap_lda_models[[1]]
+```
+
+### Word-topic-probabilities for k = 2
+
+```{r}
+# Word-Topic-probabilities
+ap_topics <- tidy(ap_lda_models[[1]], matrix = "beta")
 ap_topics
 ```
+
+### Top Words in Topics
 
 ```{r}
 ap_top_terms <- ap_topics %>%
@@ -79,37 +105,17 @@ ap_top_terms %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 ```
-Kind of fuzzy...
-
 ### Document-topic probabilities
 
 ```{r}
-ap_documents <- tidy(ap_lda, matrix = "gamma")
+ap_documents <- tidy(ap_lda_models[[1]], matrix = "gamma")
 ap_documents
 ```
 
-```{r}
-ap_documents %>%
-  filter(topic == 1) %>%
-  summary
-```
-
+### Top 5 words in each topic
 
 ```{r}
-tidy(AssociatedPress) %>%
-  filter(document == 6) %>%
-  arrange(desc(count))
-```
-
-
-```{r}
-# set a seed so that the output of the model is predictable
-ap_lda <- LDA(AssociatedPress, k = 12, control = list(seed = 42))
-ap_lda
-```
-
-```{r}
-ap_lda_td <- tidy(ap_lda)
+ap_lda_td <- tidy(ap_lda_models[[1]])
 ```
 ```{r}
 top_terms <- ap_lda_td %>%
@@ -121,19 +127,89 @@ top_terms <- ap_lda_td %>%
 top_terms
 ```
 
-```{r, fig.width=11, fig.height=10}
-top_terms %>%
+### Word-topic-probabilities for k = 20
+
+```{r}
+# Word-Topic-probabilities
+ap_topics_20 <- tidy(ap_lda_models[[4]], matrix = "beta")
+ap_topics_20
+```
+
+### Top Words in Topics
+
+```{r}
+ap_top_terms <- ap_topics_20 %>%
+  group_by(topic) %>%
+  slice_max(beta, n = 10) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)
+```
+
+```{r, fig.width=11, fig.height=16}
+ap_top_terms %>%
   mutate(term = reorder(term, beta)) %>%
   ggplot(aes(term, beta, fill = factor(topic))) +
   geom_bar(stat = "identity", show.legend = FALSE) +
   facet_wrap(~ topic, scales = "free", ncol = 3) +
   coord_flip()
 ```
+### How well does the model predict? - Evaluate with Perplexity
 
+#### k = 2 
 
+```{r}
+print("Test set - Model 1")
+perplexity(ap_lda_models[[1]], newdata = test_set)
+```
 
+#### k = 4
 
+```{r}
+print("Test set - Model 2")
+perplexity(ap_lda_models[[2]], newdata = test_set)
+```
 
+#### k = 10 
+
+```{r}
+print("Training set - Model 3")
+perplexity(ap_lda_models[[3]], newdata = train_set)
+print("Test set - Model 3")
+perplexity(ap_lda_models[[3]], newdata = test_set)
+```
+
+#### k = 20
+
+```{r}
+print("Test set - Model 4")
+perplexity(ap_lda_models[[4]], newdata = test_set)
+```
+
+#### k = 50 
+
+```{r}
+print("Test set - Model 5")
+perplexity(ap_lda_models[[5]], newdata = test_set)
+```
+
+#### k = 100 
+
+```{r}
+print("Test set - Model 6")
+perplexity(ap_lda_models[[6]], newdata = test_set)
+```
+
+```{r}
+data_frame(k = n_topics,
+           perplex = map_dbl(ap_lda_models, perplexity)) %>%
+  ggplot(aes(k, perplex)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Evaluating LDA topic models on training set",
+       subtitle = "Optimal number of topics (smaller is better)",
+       x = "Number of topics",
+       y = "Perplexity")
+```
 
 
 
