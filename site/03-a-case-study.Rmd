@@ -3,7 +3,7 @@ title: "AssoitedPress Dataset"
 output: html_document
 ---
 
-```{r, setup, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(
   comment = '', 
   #fig.width = 10, fig.height = 6,
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 ## AssociatedPress Dataset
 
-```{r load packages}
+```{r}
 library(tidyverse)
 library(tidytext)
 library(tm)
@@ -71,7 +71,7 @@ test_set <- full_data[-splitter, ]
 
 ### Train models for different k
 
-```{r}
+```{r, cache = TRUE}
 # fit models with different k
 n_topics <- c(2, 4, 10, 20, 50, 100)
 ap_lda_models <- n_topics %>%
