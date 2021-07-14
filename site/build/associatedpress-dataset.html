@@ -24,7 +24,7 @@
 <meta name="author" content="Regina Galambos" />
 
 
-<meta name="date" content="2021-07-13" />
+<meta name="date" content="2021-07-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -413,46 +413,46 @@ Weighting          : term frequency (tf)</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="associatedpress-dataset.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 1&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 1&quot;</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="associatedpress-dataset.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">1</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 402896.5</code></pre>
+<pre><code>[1] 9654.721</code></pre>
 </div>
 <div id="k-4" class="section level4" number="3.3.9.2">
 <h4><span class="header-section-number">3.3.9.2</span> k = 4</h4>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="associatedpress-dataset.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 2&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 2&quot;</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="associatedpress-dataset.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">2</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 392544.1</code></pre>
+<pre><code>[1] 8210.824</code></pre>
 </div>
 <div id="k-10" class="section level4" number="3.3.9.3">
 <h4><span class="header-section-number">3.3.9.3</span> k = 10</h4>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="associatedpress-dataset.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Training set - Model 3&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Training set - Model 3&quot;</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="associatedpress-dataset.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">3</span>]], <span class="at">newdata =</span> train_set)</span></code></pre></div>
-<pre><code>[1] 1783.309</code></pre>
+<pre><code>[1] 5240.172</code></pre>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="associatedpress-dataset.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 3&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 3&quot;</code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="associatedpress-dataset.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">3</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 410027.2</code></pre>
+<pre><code>[1] 6070.499</code></pre>
 </div>
 <div id="k-20" class="section level4" number="3.3.9.4">
 <h4><span class="header-section-number">3.3.9.4</span> k = 20</h4>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="associatedpress-dataset.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 4&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 4&quot;</code></pre>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="associatedpress-dataset.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">4</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 430908.8</code></pre>
+<pre><code>[1] 4668.823</code></pre>
 </div>
 <div id="k-50" class="section level4" number="3.3.9.5">
 <h4><span class="header-section-number">3.3.9.5</span> k = 50</h4>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="associatedpress-dataset.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 5&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 5&quot;</code></pre>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="associatedpress-dataset.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">5</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 434441.3</code></pre>
+<pre><code>[1] 2980.262</code></pre>
 </div>
 <div id="k-100" class="section level4" number="3.3.9.6">
 <h4><span class="header-section-number">3.3.9.6</span> k = 100</h4>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="associatedpress-dataset.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 6&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 6&quot;</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="associatedpress-dataset.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">6</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 455894.5</code></pre>
+<pre><code>[1] 1924.436</code></pre>
 
 </div>
 </div>
