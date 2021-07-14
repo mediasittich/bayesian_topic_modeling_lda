@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r, child="03-a-case-study.Rmd", echo=FALSE}
+```{r, child=c("03-ap-case-study.Rmd", "03-st-case-study.Rmd"), echo=FALSE}
 ```
 
 
