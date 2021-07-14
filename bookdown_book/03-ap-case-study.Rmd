@@ -1,0 +1,221 @@
+---
+title: "AssociatedPress Dataset"
+output: html_document
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', 
+  #fig.width = 10, fig.height = 6,
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+## AssociatedPress Dataset
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(tm)
+library(topicmodels)
+library(topicdoc)
+library(stringr)
+library(wordcloud)
+library(RColorBrewer)
+```
+
+```{r}
+data("AssociatedPress", package = "topicmodels")
+```
+
+### Document-Term-Matrix
+
+```{r}
+AssociatedPress
+```
+
+The data set is an object of class "DocumentTermMatrix" provided by package tm. It is a document-term matrix which contains the term frequency of 10473 terms in 2246 documents. 
+
+```{r}
+terms <- Terms(AssociatedPress)
+```
+```{r}
+summary(terms)
+```
+```{r}
+head(terms)
+```
+
+```{r}
+ap_td <- tidy(AssociatedPress)
+ap_td
+```
+
+### Split data for training & test
+
+```{r}
+# Select first 500 articles
+full_data <- AssociatedPress[1:500, ]
+```
+
+```{r}
+# create train and test sets
+n <- nrow(full_data)
+
+splitter <- sample(1:n, round(n * 0.8))
+train_set <- full_data[splitter, ]
+test_set <- full_data[-splitter, ]
+```
+
+### Train models for different k
+
+```{r, cache = TRUE}
+# fit models with different k
+n_topics <- c(2, 4, 10, 20, 50, 100)
+ap_lda_models <- n_topics %>%
+  map(LDA, x = train_set, control = list(seed = 42))
+```
+
+```{r}
+# Select model with k = 2
+ap_lda_models[[1]]
+```
+
+### Word-topic-probabilities for k = 2
+
+```{r}
+# Word-Topic-probabilities
+ap_topics <- tidy(ap_lda_models[[1]], matrix = "beta")
+ap_topics
+```
+
+### Top Words in Topics
+
+```{r}
+ap_top_terms <- ap_topics %>%
+  group_by(topic) %>%
+  slice_max(beta, n = 10) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)
+
+ap_top_terms %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+```
+### Document-topic probabilities
+
+```{r}
+ap_documents <- tidy(ap_lda_models[[1]], matrix = "gamma")
+ap_documents
+```
+
+### Top 5 words in each topic
+
+```{r}
+ap_lda_td <- tidy(ap_lda_models[[1]])
+```
+```{r}
+top_terms <- ap_lda_td %>%
+  group_by(topic) %>%
+  top_n(5, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+top_terms
+```
+
+### Word-topic-probabilities for k = 20
+
+```{r}
+# Word-Topic-probabilities
+ap_topics_20 <- tidy(ap_lda_models[[4]], matrix = "beta")
+ap_topics_20
+```
+
+### Top Words in Topics
+
+```{r}
+ap_top_terms <- ap_topics_20 %>%
+  group_by(topic) %>%
+  slice_max(beta, n = 10) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)
+```
+
+```{r, fig.width=11, fig.height=16}
+ap_top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free", ncol = 3) +
+  coord_flip()
+```
+
+### How well does the model predict? - Evaluate with Perplexity
+
+```{r}
+data_frame(k = n_topics,
+           perplex = map_dbl(ap_lda_models, perplexity)) %>%
+  ggplot(aes(k, perplex)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Evaluating LDA topic models on training set",
+       subtitle = "Optimal number of topics (smaller is better)",
+       x = "Number of topics",
+       y = "Perplexity")
+```
+
+#### k = 2 
+
+```{r}
+print("Test set - Model 1")
+perplexity(ap_lda_models[[1]], newdata = test_set)
+```
+
+#### k = 4
+
+```{r}
+print("Test set - Model 2")
+perplexity(ap_lda_models[[2]], newdata = test_set)
+```
+
+#### k = 10 
+
+```{r}
+print("Training set - Model 3")
+perplexity(ap_lda_models[[3]], newdata = train_set)
+print("Test set - Model 3")
+perplexity(ap_lda_models[[3]], newdata = test_set)
+```
+
+#### k = 20
+
+```{r}
+print("Test set - Model 4")
+perplexity(ap_lda_models[[4]], newdata = test_set)
+```
+
+#### k = 50 
+
+```{r}
+print("Test set - Model 5")
+perplexity(ap_lda_models[[5]], newdata = test_set)
+```
+
+#### k = 100 
+
+```{r}
+print("Test set - Model 6")
+perplexity(ap_lda_models[[6]], newdata = test_set)
+```
+
+
+
+
+
+

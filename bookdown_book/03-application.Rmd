@@ -1,0 +1,19 @@
+# Case Studies
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', 
+  #fig.width = 10, fig.height = 6,
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r, child=c("03-ap-case-study.Rmd", "03-st-case-study.Rmd"), echo=FALSE}
+```
+
+
+
+
+
