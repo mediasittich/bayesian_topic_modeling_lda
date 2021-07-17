@@ -201,6 +201,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>4.2</b> R Markdown</a></li>
 <li class="chapter" data-level="4.3" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>4.3</b> R Markdown</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -223,32 +224,32 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="associatedpress-dataset" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> AssociatedPress Dataset</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="associatedpress-dataset.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a href="associatedpress-dataset.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb4-3"><a href="associatedpress-dataset.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
-<span id="cb4-4"><a href="associatedpress-dataset.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
-<span id="cb4-5"><a href="associatedpress-dataset.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicdoc)</span>
-<span id="cb4-6"><a href="associatedpress-dataset.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb4-7"><a href="associatedpress-dataset.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
-<span id="cb4-8"><a href="associatedpress-dataset.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="associatedpress-dataset.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;AssociatedPress&quot;</span>, <span class="at">package =</span> <span class="st">&quot;topicmodels&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="associatedpress-dataset.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="associatedpress-dataset.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb3-3"><a href="associatedpress-dataset.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb3-4"><a href="associatedpress-dataset.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb3-5"><a href="associatedpress-dataset.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicdoc)</span>
+<span id="cb3-6"><a href="associatedpress-dataset.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb3-7"><a href="associatedpress-dataset.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb3-8"><a href="associatedpress-dataset.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="associatedpress-dataset.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;AssociatedPress&quot;</span>, <span class="at">package =</span> <span class="st">&quot;topicmodels&quot;</span>)</span></code></pre></div>
 <div id="document-term-matrix" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Document-Term-Matrix</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="associatedpress-dataset.html#cb6-1" aria-hidden="true" tabindex="-1"></a>AssociatedPress</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="associatedpress-dataset.html#cb5-1" aria-hidden="true" tabindex="-1"></a>AssociatedPress</span></code></pre></div>
 <pre><code>&lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
 Non-/sparse entries: 302031/23220327
 Sparsity           : 99%
 Maximal term length: 18
 Weighting          : term frequency (tf)</code></pre>
 <p>The data set is an object of class “DocumentTermMatrix” provided by package tm. It is a document-term matrix which contains the term frequency of 10473 terms in 2246 documents.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="associatedpress-dataset.html#cb8-1" aria-hidden="true" tabindex="-1"></a>terms <span class="ot">&lt;-</span> <span class="fu">Terms</span>(AssociatedPress)</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="associatedpress-dataset.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(terms)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="associatedpress-dataset.html#cb7-1" aria-hidden="true" tabindex="-1"></a>terms <span class="ot">&lt;-</span> <span class="fu">Terms</span>(AssociatedPress)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="associatedpress-dataset.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(terms)</span></code></pre></div>
 <pre><code>   Length     Class      Mode 
     10473 character character </code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="associatedpress-dataset.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(terms)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="associatedpress-dataset.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(terms)</span></code></pre></div>
 <pre><code>[1] &quot;aaron&quot;      &quot;abandon&quot;    &quot;abandoned&quot;  &quot;abandoning&quot; &quot;abbott&quot;     &quot;abboud&quot;    </code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="associatedpress-dataset.html#cb13-1" aria-hidden="true" tabindex="-1"></a>ap_td <span class="ot">&lt;-</span> <span class="fu">tidy</span>(AssociatedPress)</span>
-<span id="cb13-2"><a href="associatedpress-dataset.html#cb13-2" aria-hidden="true" tabindex="-1"></a>ap_td</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="associatedpress-dataset.html#cb12-1" aria-hidden="true" tabindex="-1"></a>ap_td <span class="ot">&lt;-</span> <span class="fu">tidy</span>(AssociatedPress)</span>
+<span id="cb12-2"><a href="associatedpress-dataset.html#cb12-2" aria-hidden="true" tabindex="-1"></a>ap_td</span></code></pre></div>
 <pre><code># A tibble: 302,031 x 3
    document term       count
       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -266,194 +267,194 @@ Weighting          : term frequency (tf)</code></pre>
 </div>
 <div id="split-data-for-training-test" class="section level3" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Split data for training &amp; test</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="associatedpress-dataset.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select first 500 articles</span></span>
-<span id="cb15-2"><a href="associatedpress-dataset.html#cb15-2" aria-hidden="true" tabindex="-1"></a>full_data <span class="ot">&lt;-</span> AssociatedPress[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>, ]</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="associatedpress-dataset.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create train and test sets</span></span>
-<span id="cb16-2"><a href="associatedpress-dataset.html#cb16-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(full_data)</span>
-<span id="cb16-3"><a href="associatedpress-dataset.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="associatedpress-dataset.html#cb16-4" aria-hidden="true" tabindex="-1"></a>splitter <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="fu">round</span>(n <span class="sc">*</span> <span class="fl">0.8</span>))</span>
-<span id="cb16-5"><a href="associatedpress-dataset.html#cb16-5" aria-hidden="true" tabindex="-1"></a>train_set <span class="ot">&lt;-</span> full_data[splitter, ]</span>
-<span id="cb16-6"><a href="associatedpress-dataset.html#cb16-6" aria-hidden="true" tabindex="-1"></a>test_set <span class="ot">&lt;-</span> full_data[<span class="sc">-</span>splitter, ]</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="associatedpress-dataset.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select first 500 articles</span></span>
+<span id="cb14-2"><a href="associatedpress-dataset.html#cb14-2" aria-hidden="true" tabindex="-1"></a>full_data <span class="ot">&lt;-</span> AssociatedPress[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="associatedpress-dataset.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create train and test sets</span></span>
+<span id="cb15-2"><a href="associatedpress-dataset.html#cb15-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(full_data)</span>
+<span id="cb15-3"><a href="associatedpress-dataset.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="associatedpress-dataset.html#cb15-4" aria-hidden="true" tabindex="-1"></a>splitter <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="fu">round</span>(n <span class="sc">*</span> <span class="fl">0.8</span>))</span>
+<span id="cb15-5"><a href="associatedpress-dataset.html#cb15-5" aria-hidden="true" tabindex="-1"></a>train_set <span class="ot">&lt;-</span> full_data[splitter, ]</span>
+<span id="cb15-6"><a href="associatedpress-dataset.html#cb15-6" aria-hidden="true" tabindex="-1"></a>test_set <span class="ot">&lt;-</span> full_data[<span class="sc">-</span>splitter, ]</span></code></pre></div>
 </div>
 <div id="train-models-for-different-k" class="section level3" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Train models for different k</h3>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="associatedpress-dataset.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit models with different k</span></span>
-<span id="cb17-2"><a href="associatedpress-dataset.html#cb17-2" aria-hidden="true" tabindex="-1"></a>n_topics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
-<span id="cb17-3"><a href="associatedpress-dataset.html#cb17-3" aria-hidden="true" tabindex="-1"></a>ap_lda_models <span class="ot">&lt;-</span> n_topics <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="associatedpress-dataset.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(LDA, <span class="at">x =</span> train_set, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">42</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="associatedpress-dataset.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select model with k = 2</span></span>
-<span id="cb18-2"><a href="associatedpress-dataset.html#cb18-2" aria-hidden="true" tabindex="-1"></a>ap_lda_models[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="associatedpress-dataset.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit models with different k</span></span>
+<span id="cb16-2"><a href="associatedpress-dataset.html#cb16-2" aria-hidden="true" tabindex="-1"></a>n_topics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb16-3"><a href="associatedpress-dataset.html#cb16-3" aria-hidden="true" tabindex="-1"></a>ap_lda_models <span class="ot">&lt;-</span> n_topics <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="associatedpress-dataset.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(LDA, <span class="at">x =</span> train_set, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">42</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="associatedpress-dataset.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select model with k = 2</span></span>
+<span id="cb17-2"><a href="associatedpress-dataset.html#cb17-2" aria-hidden="true" tabindex="-1"></a>ap_lda_models[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>A LDA_VEM topic model with 2 topics.</code></pre>
 </div>
 <div id="word-topic-probabilities-for-k-2" class="section level3" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Word-topic-probabilities for k = 2</h3>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="associatedpress-dataset.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Word-Topic-probabilities</span></span>
-<span id="cb20-2"><a href="associatedpress-dataset.html#cb20-2" aria-hidden="true" tabindex="-1"></a>ap_topics <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda_models[[<span class="dv">1</span>]], <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
-<span id="cb20-3"><a href="associatedpress-dataset.html#cb20-3" aria-hidden="true" tabindex="-1"></a>ap_topics</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="associatedpress-dataset.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Word-Topic-probabilities</span></span>
+<span id="cb19-2"><a href="associatedpress-dataset.html#cb19-2" aria-hidden="true" tabindex="-1"></a>ap_topics <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda_models[[<span class="dv">1</span>]], <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
+<span id="cb19-3"><a href="associatedpress-dataset.html#cb19-3" aria-hidden="true" tabindex="-1"></a>ap_topics</span></code></pre></div>
 <pre><code># A tibble: 20,946 x 3
    topic term           beta
    &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;
- 1     1 aaron      5.27e- 5
- 2     2 aaron      2.60e- 5
- 3     1 abandon    5.27e- 5
- 4     2 abandon    8.60e-11
- 5     1 abandoned  3.62e- 5
- 6     2 abandoned  1.20e- 4
- 7     1 abandoning 2.47e-78
- 8     2 abandoning 2.60e- 5
- 9     1 abbott     3.27e- 8
-10     2 abbott     7.79e- 5
+ 1     1 aaron      5.20e- 5
+ 2     2 aaron      5.13e- 5
+ 3     1 abandon    2.54e- 5
+ 4     2 abandon    6.55e- 7
+ 5     1 abandoned  4.57e- 5
+ 6     2 abandoned  2.37e- 4
+ 7     1 abandoning 2.17e-65
+ 8     2 abandoning 2.57e- 5
+ 9     1 abbott     3.16e- 9
+10     2 abbott     7.70e- 5
 # … with 20,936 more rows</code></pre>
 </div>
 <div id="top-words-in-topics" class="section level3" number="3.3.5">
 <h3><span class="header-section-number">3.3.5</span> Top Words in Topics</h3>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="associatedpress-dataset.html#cb22-1" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="ot">&lt;-</span> ap_topics <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="associatedpress-dataset.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="associatedpress-dataset.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(beta, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="associatedpress-dataset.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="associatedpress-dataset.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
-<span id="cb22-6"><a href="associatedpress-dataset.html#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="associatedpress-dataset.html#cb22-7" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="sc">%&gt;%</span></span>
-<span id="cb22-8"><a href="associatedpress-dataset.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder_within</span>(term, beta, topic)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-9"><a href="associatedpress-dataset.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(beta, term, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
-<span id="cb22-10"><a href="associatedpress-dataset.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb22-11"><a href="associatedpress-dataset.html#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
-<span id="cb22-12"><a href="associatedpress-dataset.html#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reordered</span>()</span></code></pre></div>
-<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="associatedpress-dataset.html#cb21-1" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="ot">&lt;-</span> ap_topics <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="associatedpress-dataset.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="associatedpress-dataset.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(beta, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="associatedpress-dataset.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="associatedpress-dataset.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
+<span id="cb21-6"><a href="associatedpress-dataset.html#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="associatedpress-dataset.html#cb21-7" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="associatedpress-dataset.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder_within</span>(term, beta, topic)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="associatedpress-dataset.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(beta, term, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="associatedpress-dataset.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="associatedpress-dataset.html#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb21-12"><a href="associatedpress-dataset.html#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reordered</span>()</span></code></pre></div>
+<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 ### Document-topic probabilities</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="associatedpress-dataset.html#cb23-1" aria-hidden="true" tabindex="-1"></a>ap_documents <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda_models[[<span class="dv">1</span>]], <span class="at">matrix =</span> <span class="st">&quot;gamma&quot;</span>)</span>
-<span id="cb23-2"><a href="associatedpress-dataset.html#cb23-2" aria-hidden="true" tabindex="-1"></a>ap_documents</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="associatedpress-dataset.html#cb22-1" aria-hidden="true" tabindex="-1"></a>ap_documents <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda_models[[<span class="dv">1</span>]], <span class="at">matrix =</span> <span class="st">&quot;gamma&quot;</span>)</span>
+<span id="cb22-2"><a href="associatedpress-dataset.html#cb22-2" aria-hidden="true" tabindex="-1"></a>ap_documents</span></code></pre></div>
 <pre><code># A tibble: 800 x 3
    document topic    gamma
       &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;
- 1        1     1 0.496   
- 2        2     1 0.999   
- 3        3     1 0.000449
- 4        4     1 0.990   
+ 1        1     1 0.999   
+ 2        2     1 0.00174 
+ 3        3     1 0.944   
+ 4        4     1 0.489   
  5        5     1 1.00    
- 6        6     1 0.000996
- 7        7     1 0.654   
- 8        8     1 0.000289
- 9        9     1 0.998   
-10       10     1 1.00    
+ 6        6     1 0.674   
+ 7        7     1 0.000385
+ 8        8     1 0.000393
+ 9        9     1 0.493   
+10       10     1 0.998   
 # … with 790 more rows</code></pre>
 </div>
 <div id="top-5-words-in-each-topic" class="section level3" number="3.3.6">
 <h3><span class="header-section-number">3.3.6</span> Top 5 words in each topic</h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="associatedpress-dataset.html#cb25-1" aria-hidden="true" tabindex="-1"></a>ap_lda_td <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda_models[[<span class="dv">1</span>]])</span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="associatedpress-dataset.html#cb26-1" aria-hidden="true" tabindex="-1"></a>top_terms <span class="ot">&lt;-</span> ap_lda_td <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="associatedpress-dataset.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="associatedpress-dataset.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">5</span>, beta) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="associatedpress-dataset.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb26-5"><a href="associatedpress-dataset.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
-<span id="cb26-6"><a href="associatedpress-dataset.html#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="associatedpress-dataset.html#cb26-7" aria-hidden="true" tabindex="-1"></a>top_terms</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="associatedpress-dataset.html#cb24-1" aria-hidden="true" tabindex="-1"></a>ap_lda_td <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda_models[[<span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="associatedpress-dataset.html#cb25-1" aria-hidden="true" tabindex="-1"></a>top_terms <span class="ot">&lt;-</span> ap_lda_td <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="associatedpress-dataset.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="associatedpress-dataset.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">5</span>, beta) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="associatedpress-dataset.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="associatedpress-dataset.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
+<span id="cb25-6"><a href="associatedpress-dataset.html#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="associatedpress-dataset.html#cb25-7" aria-hidden="true" tabindex="-1"></a>top_terms</span></code></pre></div>
 <pre><code># A tibble: 10 x 3
    topic term          beta
    &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
- 1     1 percent    0.00783
- 2     1 soviet     0.00713
- 3     1 new        0.00574
- 4     1 government 0.00542
- 5     1 last       0.00430
- 6     2 i          0.00791
- 7     2 people     0.00513
- 8     2 new        0.00476
- 9     2 two        0.00378
-10     2 years      0.00373</code></pre>
+ 1     1 percent    0.00790
+ 2     1 soviet     0.00639
+ 3     1 new        0.00635
+ 4     1 government 0.00465
+ 5     1 year       0.00433
+ 6     2 i          0.00878
+ 7     2 people     0.00602
+ 8     2 new        0.00392
+ 9     2 years      0.00386
+10     2 police     0.00386</code></pre>
 </div>
 <div id="word-topic-probabilities-for-k-20" class="section level3" number="3.3.7">
 <h3><span class="header-section-number">3.3.7</span> Word-topic-probabilities for k = 20</h3>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="associatedpress-dataset.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Word-Topic-probabilities</span></span>
-<span id="cb28-2"><a href="associatedpress-dataset.html#cb28-2" aria-hidden="true" tabindex="-1"></a>ap_topics_20 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda_models[[<span class="dv">4</span>]], <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
-<span id="cb28-3"><a href="associatedpress-dataset.html#cb28-3" aria-hidden="true" tabindex="-1"></a>ap_topics_20</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="associatedpress-dataset.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Word-Topic-probabilities</span></span>
+<span id="cb27-2"><a href="associatedpress-dataset.html#cb27-2" aria-hidden="true" tabindex="-1"></a>ap_topics_20 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda_models[[<span class="dv">4</span>]], <span class="at">matrix =</span> <span class="st">&quot;beta&quot;</span>)</span>
+<span id="cb27-3"><a href="associatedpress-dataset.html#cb27-3" aria-hidden="true" tabindex="-1"></a>ap_topics_20</span></code></pre></div>
 <pre><code># A tibble: 209,460 x 3
-   topic term      beta
-   &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;
- 1     1 aaron 3.72e-44
- 2     2 aaron 0       
- 3     3 aaron 3.72e-44
- 4     4 aaron 1.07e-15
- 5     5 aaron 3.72e-44
- 6     6 aaron 0       
- 7     7 aaron 3.72e-44
- 8     8 aaron 0       
- 9     9 aaron 3.72e-44
-10    10 aaron 3.72e-44
+   topic term       beta
+   &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1     1 aaron 6.44e-189
+ 2     2 aaron 2.13e-189
+ 3     3 aaron 2.97e-317
+ 4     4 aaron 1.55e-  9
+ 5     5 aaron 2.44e-189
+ 6     6 aaron 8.39e-189
+ 7     7 aaron 2.40e-189
+ 8     8 aaron 4.30e-120
+ 9     9 aaron 2.37e-189
+10    10 aaron 1.65e-189
 # … with 209,450 more rows</code></pre>
 </div>
 <div id="top-words-in-topics-1" class="section level3" number="3.3.8">
 <h3><span class="header-section-number">3.3.8</span> Top Words in Topics</h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="associatedpress-dataset.html#cb30-1" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="ot">&lt;-</span> ap_topics_20 <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="associatedpress-dataset.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href="associatedpress-dataset.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(beta, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-4"><a href="associatedpress-dataset.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="associatedpress-dataset.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="associatedpress-dataset.html#cb31-1" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="associatedpress-dataset.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder</span>(term, beta)) <span class="sc">%&gt;%</span></span>
-<span id="cb31-3"><a href="associatedpress-dataset.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(term, beta, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
-<span id="cb31-4"><a href="associatedpress-dataset.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb31-5"><a href="associatedpress-dataset.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb31-6"><a href="associatedpress-dataset.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-22-1.png" width="1056" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="associatedpress-dataset.html#cb29-1" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="ot">&lt;-</span> ap_topics_20 <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="associatedpress-dataset.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="associatedpress-dataset.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(beta, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="associatedpress-dataset.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a href="associatedpress-dataset.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="associatedpress-dataset.html#cb30-1" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="associatedpress-dataset.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder</span>(term, beta)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="associatedpress-dataset.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(term, beta, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="associatedpress-dataset.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb30-5"><a href="associatedpress-dataset.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb30-6"><a href="associatedpress-dataset.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-21-1.png" width="1056" /></p>
 </div>
 <div id="how-well-does-the-model-predict---evaluate-with-perplexity" class="section level3" number="3.3.9">
 <h3><span class="header-section-number">3.3.9</span> How well does the model predict? - Evaluate with Perplexity</h3>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="associatedpress-dataset.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(<span class="at">k =</span> n_topics,</span>
-<span id="cb32-2"><a href="associatedpress-dataset.html#cb32-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">perplex =</span> <span class="fu">map_dbl</span>(ap_lda_models, perplexity)) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="associatedpress-dataset.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(k, perplex)) <span class="sc">+</span></span>
-<span id="cb32-4"><a href="associatedpress-dataset.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb32-5"><a href="associatedpress-dataset.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb32-6"><a href="associatedpress-dataset.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Evaluating LDA topic models on training set&quot;</span>,</span>
-<span id="cb32-7"><a href="associatedpress-dataset.html#cb32-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Optimal number of topics (smaller is better)&quot;</span>,</span>
-<span id="cb32-8"><a href="associatedpress-dataset.html#cb32-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Number of topics&quot;</span>,</span>
-<span id="cb32-9"><a href="associatedpress-dataset.html#cb32-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Perplexity&quot;</span>)</span></code></pre></div>
-<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="associatedpress-dataset.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_frame</span>(<span class="at">k =</span> n_topics,</span>
+<span id="cb31-2"><a href="associatedpress-dataset.html#cb31-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">perplex =</span> <span class="fu">map_dbl</span>(ap_lda_models, perplexity)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="associatedpress-dataset.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(k, perplex)) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="associatedpress-dataset.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb31-5"><a href="associatedpress-dataset.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb31-6"><a href="associatedpress-dataset.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Evaluating LDA topic models on training set&quot;</span>,</span>
+<span id="cb31-7"><a href="associatedpress-dataset.html#cb31-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Optimal number of topics (smaller is better)&quot;</span>,</span>
+<span id="cb31-8"><a href="associatedpress-dataset.html#cb31-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Number of topics&quot;</span>,</span>
+<span id="cb31-9"><a href="associatedpress-dataset.html#cb31-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Perplexity&quot;</span>)</span></code></pre></div>
+<p><img src="intro_lda_book_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <div id="k-2" class="section level4" number="3.3.9.1">
 <h4><span class="header-section-number">3.3.9.1</span> k = 2</h4>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="associatedpress-dataset.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="associatedpress-dataset.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 1&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 1&quot;</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="associatedpress-dataset.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">1</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 9654.721</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="associatedpress-dataset.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">1</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
+<pre><code>[1] 509094.7</code></pre>
 </div>
 <div id="k-4" class="section level4" number="3.3.9.2">
 <h4><span class="header-section-number">3.3.9.2</span> k = 4</h4>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="associatedpress-dataset.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="associatedpress-dataset.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 2&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 2&quot;</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="associatedpress-dataset.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">2</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 8210.824</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="associatedpress-dataset.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">2</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
+<pre><code>[1] 499806.2</code></pre>
 </div>
 <div id="k-10" class="section level4" number="3.3.9.3">
 <h4><span class="header-section-number">3.3.9.3</span> k = 10</h4>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="associatedpress-dataset.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Training set - Model 3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="associatedpress-dataset.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Training set - Model 3&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Training set - Model 3&quot;</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="associatedpress-dataset.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">3</span>]], <span class="at">newdata =</span> train_set)</span></code></pre></div>
-<pre><code>[1] 5240.172</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="associatedpress-dataset.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="associatedpress-dataset.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">3</span>]], <span class="at">newdata =</span> train_set)</span></code></pre></div>
+<pre><code>[1] 1793.774</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="associatedpress-dataset.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 3&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 3&quot;</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="associatedpress-dataset.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">3</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 6070.499</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="associatedpress-dataset.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">3</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
+<pre><code>[1] 515275</code></pre>
 </div>
 <div id="k-20" class="section level4" number="3.3.9.4">
 <h4><span class="header-section-number">3.3.9.4</span> k = 20</h4>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="associatedpress-dataset.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 4&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="associatedpress-dataset.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 4&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 4&quot;</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="associatedpress-dataset.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">4</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 4668.823</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="associatedpress-dataset.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">4</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
+<pre><code>[1] 544985.8</code></pre>
 </div>
 <div id="k-50" class="section level4" number="3.3.9.5">
 <h4><span class="header-section-number">3.3.9.5</span> k = 50</h4>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="associatedpress-dataset.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 5&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="associatedpress-dataset.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 5&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 5&quot;</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="associatedpress-dataset.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">5</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 2980.262</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="associatedpress-dataset.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">5</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
+<pre><code>[1] 543234</code></pre>
 </div>
 <div id="k-100" class="section level4" number="3.3.9.6">
 <h4><span class="header-section-number">3.3.9.6</span> k = 100</h4>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="associatedpress-dataset.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 6&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="associatedpress-dataset.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Test set - Model 6&quot;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;Test set - Model 6&quot;</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="associatedpress-dataset.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">6</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
-<pre><code>[1] 1924.436</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="associatedpress-dataset.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">perplexity</span>(ap_lda_models[[<span class="dv">6</span>]], <span class="at">newdata =</span> test_set)</span></code></pre></div>
+<pre><code>[1] 567970.4</code></pre>
 
 </div>
 </div>
